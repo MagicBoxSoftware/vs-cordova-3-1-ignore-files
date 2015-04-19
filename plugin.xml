@@ -12,13 +12,13 @@
     <license>MIT</license>
     <keywords>visualstudio,vs,visual,studio,cordova,build</keywords>
 	<info>
-		Place list of unique file names 1 per line in releaseignoreglobal.txt project root (where your index.html lives) to be removed anywhere in the project.
+		Place list of unique file names or glob file patterns 1 per line in releaseignoreglobal.txt project root (where your index.html lives) to be removed anywhere in the project.
 
 		To remove files from 1 directory - Place list of unique file names 1 per line in releaseignore.txt in the directory as the file(s).
 
 		To remove an entire directory - place a blank ignorereleasedir.txt file in the directory.
 		
-		Files beginning with a "." dot are automatically removed as are .nuget, packages.config and _references.js. Source maps ".map" files are removed from release builds.
+		Files beginning with a "." dot are automatically removed as are .nupkg, packages.config and _references.js.
 	</info>
     <repo>https://github.com/MagicBoxSoftware/vs-cordova-3-1-ignore-files</repo>
     <issue>https://github.com/MagicBoxSoftware/vs-cordova-3-1-ignore-files/issues</issue>

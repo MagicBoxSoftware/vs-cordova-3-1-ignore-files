@@ -8,14 +8,12 @@ module.exports = function (context) {
     var glob = context.requireCordovaModule('glob');
 
 //Pattern to be removed globally every time the app is built
-	var remAll = "*.ts";
 	var remPatterns = ["*.ts", "*.nupkg", "_references.js", "packages.config", "Project_Readme.html"];
 	var isRelease = false;
 	
-//If this is not a debug build we do not need the source maps
+//If this is not a debug build we may not need some files
 	if(context.cmdLine.indexOf('configuration Debug') === -1){
-		remAll = "@(*.ts|*.map|*.nupkg)";
-		remPatterns.push("*.map", "releaseignore*");
+		remPatterns.push("releaseignore*");
 		isRelease = true;
 	}
 
@@ -47,7 +45,7 @@ module.exports = function (context) {
 		globPatternBuilder += ")";
 		var globPattern = globPatternBuilder.replace("|)", ")");
 		
-	// Remove globally all files matching the remAll pattern
+	// Remove globally all files matching the globPattern pattern
 		glob(pwww + "**/" + globPattern, function(err, remFiles) {
             if(err) throw err;
 			deleteMiscFiles(fs, remFiles, isRelease);
