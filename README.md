@@ -8,6 +8,7 @@ In Visual Studio 2013 with *Visual Studio Tools for Apache Cordova CTP3.1* insta
 3. Check Git.
 4. Paste the URL of this repo https://github.com/MagicBoxSoftware/vs-cordova-3-1-ignore-files
 5. Click the arrow button then click "Add" when it appears.
+
 ## Usage
 The plugin consists of a default set of exclusions (`*.ts, *.nupkg, _references.js, packages.config and Project_Readme.html`) and 3 file types for specifying custom exclusions. Other than the default exclusions exclusions are only applied to build configurations other than *Debug*.
 * **releaseignoreglobal.txt** - 1 file name or file pattern per line located in the project root.
