@@ -17,7 +17,8 @@ The plugin consists of a default set of exclusions (`*.ts, *.nupkg, _references.
   * While subdirectory path syntax is permitted here it is not recommended. It is recommended to place another `releaseignore.txt` in the subdirectory. If path syntax is used use forward slashes with no leading slash (`subdir/filename.ext`).
   * Directories cannot be excluded in this file.
 * **releaseignoredir.txt** - An empty file placed in the directory to be excluded.
-  * **DOES NOT** perform a recursive exclusion. Only files in the same directory where the file is located will be excluded.
+  * **NEW** Performs a recursive delete by default.
+  * **NEW** Add `recursive=false` to the file to delete only the current directory. This will also allow releaseignore.txt to be used in subdirectories.
 
 ### Unminified javascript exclusion
 Part of the default action is to exclude unminified javascript when a minified (`.min.js`) file by the same name exists in the same directory as the minified version. Many libraries such as Ionic and AngularJS Nuget packages include both the minified and unminified versions in the same directory. Since the Cordova build packs both into app package this exclusion can reduce app package size by as much as half.
@@ -33,4 +34,4 @@ I would like to thank Chuck Lantz - https://github.com/Chuxel - of Microsoft who
 It was from that example that this plugin was inspired.
 
 #### Other info
-Another, more editorial, explanation of this plugin and its origins cane be found on our [web site](http://magicboxsoftware.com/visual-studio-cordova-tools-the-adventure-begins/).
+Another, more editorial, explanation of this plugin and its origins can be found on our [web site](http://magicboxsoftware.com/visual-studio-cordova-tools-the-adventure-begins/).

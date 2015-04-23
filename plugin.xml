@@ -5,7 +5,7 @@
 -->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
     id="com.mbxsw.vs.clean-cordova-build"
-    version="0.8.5">
+    version="0.8.6">
     <name>Remove excess files plugin</name>
 	<author>Magic Box Software</author>
     <description>Plugin removes config, unminified js/css, specified and misc. files from the platform folder when creating app packages.</description>

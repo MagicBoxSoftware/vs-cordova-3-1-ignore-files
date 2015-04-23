@@ -104,11 +104,37 @@ module.exports = function (context) {
 //Deletes all files in the directory where a releaseignoredir.txt file exists
 	function deleteDir(fs, igFile){
 		var targetDir = igFile.replace("releaseignoredir.txt", "");
+		var recursive = true;
+		if(fs.readFileSync(igFile, "utf8").indexOf("recursive=false") !== -1){recursive = false;}
 		var displayDirSrc = targetDir.split("/assets");
 		fList = fs.readdirSync(targetDir);
 		fList.forEach(function(file){
-			console.log("--[Deleting dir "  + displayDirSrc[1] + "] -> "  + file);
-			fs.unlinkSync(targetDir + file);
+			//If recursion is required
+			if(fs.statSync(targetDir + file).isDirectory()){
+				if(!recursive){return;}
+				console.log('removing dir -> ' + (targetDir + file));
+				deleteDirR(fs, targetDir + file + '/');
+			}
+			else{
+				console.log("--[Deleting dir "  + displayDirSrc[1] + "] -> "  + file);
+				fs.unlinkSync(targetDir + file);
+			}
+			
+		});
+	}
+	//Recursive directory delete. We need not worry about the rmdir because Cordova ignores empty directories
+	function deleteDirR(fs, dir){
+		var displayDirSrc = dir.split("/assets");
+		fList = fs.readdirSync(dir);
+		fList.forEach(function(file){
+			if(fs.statSync(dir + file).isDirectory()){
+				console.log('removing dir -> ' + (dir + file));
+				deleteDirR(fs, dir + file + '/');
+			}
+			else{
+				console.log("--[Deleting dir "  + displayDirSrc[1] + "] -> "  + file);
+				fs.unlinkSync(dir + file);
+			}
 		});
 	}
 
