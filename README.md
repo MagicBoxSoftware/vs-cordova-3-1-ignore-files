@@ -11,6 +11,7 @@ In Visual Studio 2013 with *Visual Studio Tools for Apache Cordova CTP3.1* insta
 
 ### Usage
 **NEW** A graphical documentation of the issue and plugin usage is located [here](http://mikesmagicbox.com/visual-studio-cordova-ignore-files-plugin/).
+
 The plugin consists of a default set of exclusions (`*.ts, *.nupkg, _references.js, packages.config and Project_Readme.html`) and 3 file types for specifying custom exclusions. Other than the default exclusions exclusions are only applied to build configurations other than *Debug*.
 * **releaseignoreglobal.txt** - 1 file name or file pattern per line located in the project root.
   - Patterns included here are applied globally throughout the project. For example to remove all javascript source maps place `*.map` in the file. To remove *version.json* anywhere it appears in the project add a line with `version.json`. You cannot specify directories in this file.
