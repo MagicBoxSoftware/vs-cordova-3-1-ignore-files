@@ -19,8 +19,13 @@ module.exports = function (context) {
 
 //Anchor to platform root
     context.opts.cordova.platforms.forEach(function(platform) {
-		//Platform www directory path
-		var pwww = "platforms/" + platform + "/assets/www/";
+		 //Platform www directory path
+	        if (platform === 'windows') {
+	            var pwww = "platforms/windows/www/";
+	        } else {
+	            var pwww = "platforms/" + platform + "/assets/www/";
+	        }
+        
 		
 	//Remove unminified js and css if minified exists.
 		jsCssPattern = "@(*.css|*.js)";
